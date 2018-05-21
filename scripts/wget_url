@@ -1,0 +1,3 @@
+cd ~/Downloads
+wget $1 --no-check-certificate 
+notify-send 'WGET URL' 'Download concluido'

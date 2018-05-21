@@ -59,6 +59,24 @@
       "title": "Debugging: dump environment",
       "command": "scripts/dump_env",
       "contexts": ["all"]
+    },
+    
+    
+    
+    {
+      "name": "clone_to_lab",
+      "title": "Clone to Lab",
+      "command": "scripts/clone_to_lab \"$SHELLAC_TAB_URL\" ",
+      "contexts": ["all"]
+    },
+    
+    
+    
+    {
+      "name": "wget_url",
+      "title": "wget link to ~/Downloads",
+      "command": "scripts/wget_url \"$SHELLAC_INFO_LINKURL\" ",
+      "contexts": ["link"]
     }
   ]
 }
