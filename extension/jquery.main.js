@@ -15,7 +15,8 @@ $(document).ready(function() {
   //   * the popup page when the omnibar icon is clicked
 
   var uri = window.location.pathname;
-
+  init_gamepad();
+  
   if (uri == '/background.html')
     init_background_page();
   else if (uri == '/popup.html')
@@ -24,6 +25,34 @@ $(document).ready(function() {
 });
 
 
+function init_gamepad(){
+    
+    window.gamepad = new Gamepad();
+//    alert('Will try to load gamepad');
+    gamepad.bind(Gamepad.Event.CONNECTED, function (device) {
+        alert(['CONNECTED', device]);
+    });
+
+    gamepad.bind(Gamepad.Event.DISCONNECTED, function (device) {
+        alert(['DISCONNECTED', device]);
+    });
+
+    gamepad.bind(Gamepad.Event.UNSUPPORTED, function (device) {
+        alert(['UNSUPPORTED', device]);
+    });
+
+    gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
+        alert(['BUTTON_DOWN', e.gamepad]);
+    });
+
+    gamepad.bind(Gamepad.Event.BUTTON_UP, function (e) {
+        alert(['BUTTON_UP', e.gamepad]);
+    });
+
+    gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
+    //        alert(['AXIS_CHANGED', e.axis, e.value]);
+    });
+}
 function init_background_page()
 {
   // Create a default context menu with the "refresh" menu item,
