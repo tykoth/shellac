@@ -1,2 +1,4 @@
 #!/bin/sh
+BASEDIR=$(dirname "$0")
+cd $BASEDIR
 exec bin/webapp.py 8783

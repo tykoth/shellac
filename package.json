@@ -1,0 +1,24 @@
+{
+  "name": "node-shellac",
+  "version": "1.0.0",
+  "description": "NodeJS version of acg/shellac",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tykoth/shellac.git"
+  },
+  "keywords": [
+    "node",
+    "js",
+    "shellac"
+  ],
+  "author": "Thiago Bocchile <tykoth@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tykoth/shellac/issues"
+  },
+  "homepage": "https://github.com/tykoth/shellac#readme"
+}
