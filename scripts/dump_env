@@ -2,11 +2,14 @@
 
 import sys
 import os
-
+import subprocess
+import pprint
 env = os.environ
 keys = filter( lambda k: k.startswith('SHELLAC_'), env.keys() )
 keys.sort()
-
+output = ""   
 for k in keys:
-  sys.stderr.write("%s=%s\n" % (k, env[k]))
+    output += k + ":" + env[k] + "\n"
+
+subprocess.Popen(['notify-send', 'Dump', output])
 
