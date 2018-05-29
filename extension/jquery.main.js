@@ -228,4 +228,15 @@ function ajax( uri, data, opts )
 }
 
 
+chrome.runtime.onMessageExternal.addListener(
+  function(request, sender, sendResponse) {
+    if (sender.url == '?')
+      return;  // don't allow this web page access
+    if (request.openUrlInEditor){
+        alert('ok from request');
+        //openUrl(request.openUrlInEditor);
+    }
+      
+  });
+
 })(jQuery);
