@@ -1,6 +1,8 @@
 #!/bin/bash
 
-notify-send 'Lab' $1
+notify-sentinela "Clonando repositório para o laboratório\n($1)"
 
 cd /lab
 git clone $1
+
+notify-sentinela "Repositorio clonado com sucesso em /lab"

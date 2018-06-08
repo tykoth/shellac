@@ -4,7 +4,7 @@ var extension_name = "Shellac";
 var base_url = "http://127.0.0.1:8783";
 var actions = {};
 var parent_menu;
-var DEBUG = 0;   // set to '1' to see console logging
+var DEBUG = 1;   // set to '1' to see console logging
 var logger = function() { if (DEBUG) console.log.apply(console,arguments); };
 
 
@@ -197,6 +197,7 @@ function context_onclick(info, tab)
 
 function post_action(data)
 {
+//    alert(JSON.stringify(data));
   var payload = { action: data.action.name };
   $.each( data.info, function(k,v) { payload["info."+k] = v; } );
   $.each( data.tab, function(k,v) { payload["tab."+k] = v; } );
