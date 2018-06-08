@@ -12,6 +12,9 @@ try:
 except ImportError:
   import json
 
+abspath = os.path.abspath(__file__)
+dname = os.path.dirname(abspath)
+os.chdir(dname+"/../")
 
 class Model:
 

@@ -3,4 +3,5 @@
 
 selection="$1"
 uname=`uname -s`
-$1
+notify-sentinela "$@"
+$@ 2>&1 | xargs -I{} notify-sentinela  "{}"

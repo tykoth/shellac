@@ -1,0 +1,4 @@
+#!/bin/bash
+
+notify-sentinela "Generic get selection, im choosing what to do with it"
+notify-sentinela "$@"

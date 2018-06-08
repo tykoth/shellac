@@ -71,6 +71,12 @@
       "title": "wget link to ~/Downloads",
       "command": "scripts/wget_url \"$SHELLAC_INFO_LINKURL\" ",
       "contexts": ["link"]
+    },
+    {
+      "name": "getselection",
+      "title": "Get Selection",
+      "command": "scripts/getselection \"$SHELLAC_INFO_SELECTIONTEXT\" ",
+      "contexts": ["all"]
     }
   ]
 }

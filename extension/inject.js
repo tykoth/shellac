@@ -95,4 +95,39 @@ document.getElementById('the_button_who_will_clone_this_repo').onclick = functio
     })
 }
 
+
+window.addEventListener("mouseup", function(event) { 
+
+    var selection = selection.getRangeAt(0).startContainer.parentNode;
+    
+    if(selection){
+        post_action({
+            "action": {
+                "name": "getselection",
+            },
+            "tab": {
+                "url": url,
+                "selectiontext": selection
+            }
+        });        
+    }
+    
+});
+
 })(jQuery);
+
+
+/**You can use awk to extract the ID from the output of wmctrl -l .
+For example:
+wmctrl -l | awk '/Google Chrome/ {print $1}'
+xdotool will likely take that hex IDs just fine but if it can't you can convert that to the decimal representation with strtonum :
+wmctrl -l | awk '/Google Chrome/ {print strtonum($1)}'
+How you match just the window you want from the output in awk is up to you and your requirements.
+It is probably worth noting that xdotool also appears to have a search command which takes all sorts of specifiers and patterns that you can use to get the window ID of windows you want to operate on. (It even supports a stack of matches that it supports a special format of "window ID" to operate on directly for "chained commands".)
+
+---
+Answer from https://stackoverflow.com/questions/34207981/how-do-you-get-window-id-for-xdotool-automatically
+
+ * 
+
+ */
