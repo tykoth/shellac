@@ -1,4 +1,6 @@
 #!/bin/sh
 BASEDIR=$(dirname "$0")
 cd $BASEDIR
-exec bin/webapp.py 8783
+echo "* Will start at $BASEDIR"
+exec bin/webapp.py 8783  > output.log 2>&1 &
+
