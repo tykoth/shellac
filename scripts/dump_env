@@ -1,15 +1,3 @@
-#!/usr/bin/env python
+#!/bin/bash
 
-import sys
-import os
-import subprocess
-import pprint
-env = os.environ
-keys = filter( lambda k: k.startswith('SHELLAC_'), env.keys() )
-keys.sort()
-output = ""   
-for k in keys:
-    output += k + ":" + env[k] + "\n"
-
-subprocess.Popen(['notify-send', 'Dump', output])
-
+notify-sentinela "Ola"
