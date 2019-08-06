@@ -2,5 +2,5 @@
 BASEDIR=$(dirname "$0")
 cd $BASEDIR
 echo "* Will start at $BASEDIR"
-exec bin/webapp.py 8783  > output.log 2>&1 &
+exec bin/webapp.py 8783  2>&1
 

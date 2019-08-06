@@ -1,0 +1,5 @@
+#!/bin/bash
+
+/lab/bin/ccnotify "Ok"
+DISPLAY=:0 /usr/bin/chromium --maximized --no-sandbox --incognito --disable-web-security --test-type --disable-warnings --user-data-dir=/tmp $1
+

@@ -1,20 +1,29 @@
 {
     "name": "Shellac Plus Github Buttons",
     "version": "0.3",
+    "options_page":"options.html",
+    "options_ui": {
+      "page": "options.html",
+      "open_in_tab": true
+    },
     "manifest_version": 2,
+    "offline_enabled": true,
     "description": "Extend Chrome with unix shell commands and buttons on github LOLLL.",
     "background": {
         "page": "background.html",
         "persistent": true
     },
+    "content_security_policy": "script-src 'self' http://127.0.0.1:55777; object-src 'self'",
+
     "content_scripts": [
         {
             "matches": [
-                "*://github.com/*"
+                "*://*/*"
             ],
             "js": [
                 "jquery-1.5.1.min.js",
-                "inject.js"
+                "inject.js",
+                "content.js"
             ],
             "run_at": "document_end"
         }
@@ -33,7 +42,8 @@
         "storage",
         "activeTab",
         "contextMenus",
-        "http://127.0.0.1/*"
+        "*://*/*"
+        
     ],
     "icons": {
         "16": "icon-16x16.png",

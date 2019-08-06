@@ -1,0 +1,6 @@
+#!/bin/bash
+
+
+command='DISPLAY=:0 nohup chromium --maximized --no-sandbox --incognito --disable-web-security --test-type --disable-warnings --user-data-dir=/tmp '
+ssh samsung "$command $1" & disown
+

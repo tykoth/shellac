@@ -1,0 +1,7 @@
+seq 100 | while read number
+do
+  icon=$(( ${RANDOM: -1:1} + ${RANDOM: -1:1} + 1 ))
+  icon=$(ls /usr/share/icons/gnome/32x32/emotes | grep face | sed s/.png// | head -n $icon | tail -n 1)
+  notify-send -i $icon -h int:value:$number -h string:synchronous:my-progress  int:transient:1 "Progress"
+  sleep 0.1
+done

@@ -1,0 +1,15 @@
+shellac server @ http://127.0.0.1:8783/
+Traceback (most recent call last):
+  File "bin/webapp.py", line 131, in <module>
+    main( sys.argv )
+  File "bin/webapp.py", line 125, in main
+    httpd = BaseHTTPServer.HTTPServer(server_address, HttpHandler)
+  File "/usr/lib/python2.7/SocketServer.py", line 417, in __init__
+    self.server_bind()
+  File "/usr/lib/python2.7/BaseHTTPServer.py", line 108, in server_bind
+    SocketServer.TCPServer.server_bind(self)
+  File "/usr/lib/python2.7/SocketServer.py", line 431, in server_bind
+    self.socket.bind(self.server_address)
+  File "/usr/lib/python2.7/socket.py", line 228, in meth
+    return getattr(self._sock,name)(*args)
+socket.error: [Errno 98] Address already in use

@@ -37,7 +37,7 @@ class HttpHandler( BaseHTTPServer.BaseHTTPRequestHandler ):
       self.send_response(200)
       self.send_header('Content-Type', 'application/json')
       self.send_header("Content-Length", str(st[6]))
-      self.send_header("Last-Modified", self.date_time_string(st.st_mtime))
+      #self.send_header("Last-Modified", self.date_time_string(st.st_mtime))
       self.end_headers()
       shutil.copyfileobj(f, self.wfile)
       f.close()

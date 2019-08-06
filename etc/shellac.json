@@ -1,5 +1,19 @@
+
+
 {
   "actions": [
+    {
+      "name": "call_fun",
+      "title": "Cardio",
+      "command": "scripts/cardio \"$SHELLAC_TAB_URL\" \"$SHELLAC_TAB_TITLE\"",
+      "contexts": ["page"]
+    },
+    {
+      "name": "open_on_samsung",
+      "title": "Open on Samsung",
+      "command": "scripts/open_on_samsung \"$SHELLAC_TAB_URL\" \"$SHELLAC_TAB_TITLE\"",
+      "contexts": ["page"]
+    },
     {
       "name": "execute_selection",
       "title": "Execute selection",
@@ -7,65 +21,23 @@
       "contexts": ["selection"]
     },
     {
-      "name": "mail_page_gnome",
-      "title": "Mail this Page with Gnome Email App",
-      "command": "scripts/mail_gnome \"$SHELLAC_TAB_URL\" \"$SHELLAC_TAB_TITLE\"",
-      "contexts": ["page"]
-    },
-    {
-      "name": "mail_page_thunderbird",
-      "title": "Mail this Page with Thunderbird",
-      "command": "scripts/mail_thunderbird \"$SHELLAC_TAB_URL\" \"$SHELLAC_TAB_TITLE\"",
-      "contexts": ["page"]
-    },
-    {
-      "name": "mail_page_tmux_mutt",
-      "title": "Mail this Page with tmux + mutt",
-      "command": "scripts/mail_tmux_mutt \"$SHELLAC_TAB_URL\" \"$SHELLAC_TAB_TITLE\"",
-      "contexts": ["page"]
-    },
-    {
-      "name": "mail_link_gnome",
-      "title": "Mail this Link with Gnome Email App",
-      "command": "scripts/mail_gnome \"$SHELLAC_INFO_URL\" \"$SHELLAC_TAB_TITLE\"",
-      "contexts": ["link"]
-    },
-    {
-      "name": "mail_link_thunderbird",
-      "title": "Mail this Link with thunderbird",
-      "command": "scripts/mail_thunderbird \"$SHELLAC_INFO_LINKURL\" \"$SHELLAC_TAB_TITLE\"",
-      "contexts": ["link"]
-    },
-    {
-      "name": "mail_link_tmux_mutt",
-      "title": "Mail this Link with tmux + mutt",
-      "command": "scripts/mail_tmux_mutt \"$SHELLAC_INFO_LINKURL\" \"$SHELLAC_TAB_TITLE\"",
-      "contexts": ["link"]
-    },
-    {
-      "name": "mail_image_thunderbird",
-      "title": "Mail this Image with thunderbird",
-      "command": "scripts/mail_image_thunderbird \"$SHELLAC_INFO_SRCURL\" \"$SHELLAC_TAB_TITLE\"",
-      "contexts": ["image"]
-    },
-    {
       "name": "env",
       "title": "Debugging: dump environment",
       "command": "scripts/dump_env",
       "contexts": ["all"]
     },
-    
-    
-    
+    {
+      "name": "clone_to_lab_yarn",
+      "title": "Clone, Yarn and Start",
+      "command": "scripts/clone_to_lab_yarn \"$SHELLAC_TAB_URL\" ",
+      "contexts": ["all"]
+    },
     {
       "name": "clone_to_lab",
       "title": "Clone to Lab",
       "command": "scripts/clone_to_lab \"$SHELLAC_TAB_URL\" ",
       "contexts": ["all"]
     },
-    
-    
-    
     {
       "name": "wget_url",
       "title": "wget link to ~/Downloads",
@@ -74,7 +46,7 @@
     },
     {
       "name": "getselection",
-      "title": "Get Selection",
+      "title": "Get Selection aaaaaaaaaaaaa",
       "command": "scripts/getselection \"$SHELLAC_INFO_SELECTIONTEXT\" ",
       "contexts": ["all"]
     }
