@@ -148,7 +148,7 @@ switch(window.location.hostname){
         {
             const inputs = [];
             $(":input").each((a,b) => {
-                console.log(b);
+                //console.log(b);
 				var label;
                 if($(b).parent().find('label').length > 0){
                     label = $(b).parent().find('label').text();
