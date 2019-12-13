@@ -1,14 +1,19 @@
 #!/bin/bash
 
-notify-sentinela "Clonando repositório"
+/lab/bin/ccnotify "Cloning..."
 
 cd /lab
 git clone $1
 
-notify-sentinela "Iniciando processo de instalação"
+/lab/bin/ccnotify "Cloning complete!"
 
 cd $1
 
+/lab/bin/ccnotify "Deploying!"
+
 yarn
 
-notify-sentinela "Instalação concluida, execute manualmente a inicialização"
+
+/lab/bin/ccnotify "Starting!"
+
+yarn start

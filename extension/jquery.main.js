@@ -46,10 +46,13 @@ function init_background_page()
   // Create a default context menu with the "refresh" menu item,
   // in case the server is brought up *after* the extension is launched.
 
-  setup_context_menu(null);
-  populate_context_menu();
 
   socket = io.connect('http://127.0.0.1:55777/');
+  socket.on('config', (data) => {
+    localStorage['shellAcConfig'] = JSON.stringify(data);
+    setup_context_menu(null);
+    populate_context_menu();
+  })
   // init_bot();
 }
 
@@ -59,11 +62,8 @@ function populate_context_menu()
   // Ajax to get the shellac.json config data.
   // Clear the current context menu for this extension,
   // then rebuild the context menu from scratch.
-
-  ajax('/config/', {}, {
-    type: 'GET',
-    dataType: 'json',
-    success: function(data) {
+  
+  const data = JSON.parse(localStorage['shellAcConfig']);
       chrome.contextMenus.removeAll( function() {
         parent_menu = null;
         refresh_menuitem = null;
@@ -71,8 +71,19 @@ function populate_context_menu()
         setup_context_menu(data);
         setup_command_listener(data);
       });
-    }
-  });
+  // ajax('/config/', {}, {
+  //   type: 'GET',
+  //   dataType: 'json',
+  //   success: function(data) {
+  //     chrome.contextMenus.removeAll( function() {
+  //       parent_menu = null;
+  //       refresh_menuitem = null;
+  //       actions = [];
+  //       setup_context_menu(data);
+  //       setup_command_listener(data);
+  //     });
+  //   }
+  // });
 }
 
 
@@ -114,133 +125,7 @@ window.addEventListener("contextmenu", function(){
   });
 }
 
-function init_bot()
-{
 
-
-  bot = new Bot();
-
-  bot.assimilate(BotJavascriptInterpreter);
-  bot.assimilate(BotRegexClassMethodsInterpreter);
-  bot.assimilate(BotWindowCommandsV1Interpreter);
-  bot.assimilate(BotWebController);
-  bot.assimilate(BotCalculatorController);
-  bot.assimilate(BotRepeaterController);
-  bot.assimilate(BotLuckyOpenerController);
-  bot.assimilate(BotYoutubeController);
-  bot.assimilate(BotBrowserSyncController);
-  bot.assimilate(BotTodoListController);
-  bot.assimilate(BotLanguageSettingsController);
-  bot.assimilate(BotCustomerServiceSimulatorController);
-  bot.assimilate(BotPtBrHelpController);
-  bot.assimilate(BotBehaviorismController);
-  bot.assimilate(BotChineseCommander);
-  bot.assimilate(Palavrao);
-  bot.assimilate(Bot5W);
-  bot.assimilate(BotArquivosController);
-
-
-  bot.assimilate(BotWindowSpeechRecognitionComponent);
-  bot.assimilate(BotWindowSpeechSynthesisComponent);
-  // bot.assimilate(BotWindowSpeechRecognitionComponent);
-  // bot.assimilate(BotWindowSpeechSynthesisComponent);
-  bot.assimilate(BotNotifierComponent);
-  bot.assimilate(BotBelievesController);
-  bot.assimilate(BotOpinionController);
-  bot.assimilate(BotLikesController);
-  bot.assimilate(BotUserNeedsController);
-  bot.assimilate(BotUserBagController);
-  bot.assimilate(BotUserAskingsController);
-  bot.assimilate(BotListsController);
-  bot.assimilate(BotUserPeopleController);
-  bot.assimilate(BotIsController);
-
-
-  /**
-   * All debuggers are belong to us
-   */
-  bot.assimilate(BotDebuggerController);
-  bot.assimilate(BotDebuggerSistemaController);
-  bot.assimilate(BotDebuggerAleatoriosController);
-  bot.assimilate(BotDebuggerAnalisarController);
-  bot.assimilate(BotDebuggerApresentadorImagensController);
-  bot.assimilate(BotDebuggerAtualizarPalavraController);
-  bot.assimilate(BotDebuggerCaracteristicasPessoaisController);
-  bot.assimilate(BotDebuggerEnglishController);
-  bot.assimilate(BotDebuggerExportarController);
-  bot.assimilate(BotDebuggerFrasesComunsController);
-  bot.assimilate(BotDebuggerGeradorController);
-  bot.assimilate(BotDebuggerPalavrasController);
-  bot.assimilate(BotDebuggerSistemaController);
-  bot.assimilate(BotLayoutController);  
-
-
-  bot.components.speechSynthesis.onspeak(function(text) {
-      console.log(text);
-      var name = (bot.params['nome']) ? bot.params['nome'] : 'BotSemNome';
-      bot.notify(text);
-  });
-  bot.components.speechRecognition.start();
-  bot.components.speechRecognition.oneachevent(function(event) {
-
-
-      switch (event.type) {
-          case 'start':
-              // $("#status").addClass("listening");
-              break;
-
-          case 'speechstart':
-              // $("#status").removeClass("listening").addClass("working");
-              break;
-
-          case 'speechend':
-              // $("#status").removeClass("working").addClass("listening");
-              break;
-
-          case 'end':
-              // $("#status").removeClass("listening");
-              break;
-
-          case 'result':
-              // if (event.results[0].isFinal) {
-
-                  // frases++;
-              // }
-              break;
-
-      }
-      if (event.type === 'error') {
-
-
-      }
-
-      if (typeof lastEvent != 'undefined' && event.type != lastEvent.type) {
-          timeLast = event.timeStamp - lastEvent.timeStamp;
-      }
-
-      // lastEvent = event;
-
-      // $(".event-timestamp").html(formatTime((event.timeStamp / 1000).toFixed(0)));
-      // $(".event-timestamp-last").html(formatTime((timeLast / 1000).toFixed(0)));
-      // $(".executions").html(bot.executions);
-      // $(".opened-windows").html(bot.windows.length);
-      // $(".executions").html(bot.executions);
-      // $(".phrases").html(frases);
-      // $(".readed-lines").html(bot.readedLines);
-      // $(".total-readable-lines").html(bot.totalReadableLines);
-  });
-
-  bot.components.speechRecognition.oneachresult(function(result, final) {
-      // var transcript = result.transcript;
-      // var confidence = result.confidence;
-      // $(".intro-text").text(transcript);
-  });
-
-  bot.components.speechRecognition.onfinal(function(result) {
-      // $("#ugli").val($("#ugli").val() + "\n" + result);
-      // alert("BKZ");
-  });    
-}
 function setup_context_menu(config)
 {
   // Create the parent menu item.
@@ -336,8 +221,6 @@ function context_onclick(info, tab)
     info: info
   };
   post_action(data);
-
-  socket.emit('message', data);
 }
 
 function post_action(data)
@@ -346,7 +229,9 @@ function post_action(data)
   var payload = { action: data.action.name };
   $.each( data.info, function(k,v) { payload["info."+k] = v; } );
   $.each( data.tab, function(k,v) { payload["tab."+k] = v; } );
-  ajax('/action/', payload, { type:'POST' });
+
+  socket.emit('action', payload);
+  // ajax('/action/', payload, { type:'POST' });
 }
 
 
@@ -389,7 +274,7 @@ function ajax( uri, data, opts )
   chrome.runtime.onMessage.addListener(function (msg, sender) {
     
     if ((msg.from === 'formCrawler') && (msg.subject === 'newInputs')) {
-      socket.emit('formCrawler.newInputs', msg);
+      // socket.emit('formCrawler.newInputs', msg);
     }
   });  
 

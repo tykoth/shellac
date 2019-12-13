@@ -1,0 +1,6 @@
+{
+    "scm.alwaysShowActions": true,
+    "scm.alwaysShowProviders": true,
+    "scm.defaultViewMode": "tree",
+    "azureCLI.showResultInNewEditor": true
+}

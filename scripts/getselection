@@ -1,4 +1,7 @@
 #!/bin/bash
 
-notify-sentinela "Generic get selection, im choosing what to do with it"
-notify-sentinela "$@"
+echo "KKKKOKOKOK"
+echo $1
+which notify-send 
+# notify-send "Generic get selection, im choosing what to do with it"
+/usr/bin/notify-send "SELECTION" "$1"

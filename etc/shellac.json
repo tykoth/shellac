@@ -3,6 +3,12 @@
 {
   "actions": [
     {
+      "name": "open_on_acer",
+      "title": "Mandar pro Acer",
+      "command": "scripts/open_on_acer \"$SHELLAC_TAB_URL\" \"$SHELLAC_TAB_TITLE\"",
+      "contexts": ["page"]
+    },
+    {
       "name": "call_fun",
       "title": "Cardio",
       "command": "scripts/cardio \"$SHELLAC_TAB_URL\" \"$SHELLAC_TAB_TITLE\"",
